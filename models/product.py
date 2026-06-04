@@ -1,4 +1,4 @@
-from orm.model import Model
+from orm.models.model import Model
 
 class Product(Model):
     title = 'Телефон'

@@ -1,7 +1,7 @@
 import sqlite3
 
 from .abstact_database import DatabaseConnection
-from settings import DATABASE_PATH
+from ..settings import DATABASE_PATH
 
 class SQLiteConnection(DatabaseConnection):
     db_path = DATABASE_PATH
