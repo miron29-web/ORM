@@ -8,9 +8,17 @@ class Model(DatabaseManager, metaclass=ModelMeta):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
+        super().__init__()
+
     def create_table(self):
-        fields = []
-        values = []
+        query_fields = list()
 
         for name, field in self._fields.items():
-            print(name, field)
+            query_fields.append(name + " " + field.get_query())
+
+        sql = f"""CREATE TABLE IF NOT EXISTS `{self._table_name}` (
+            {", ".join(query_fields)}
+        );"""
+
+        print(sql)
+        self.execute(sql)

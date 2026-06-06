@@ -5,7 +5,10 @@ class DatabaseManager:
         self.__db_connect = SQLiteConnection()
 
     def execute(self, sql):
-        self.__db_connect.connect()
-        cursor = self.__db_connect.cursor()
+        connect = self.__db_connect.connect()
+        cursor = connect.cursor()
+
+        cursor.execute(sql)
+
         cursor.close()
         self.__db_connect.close()

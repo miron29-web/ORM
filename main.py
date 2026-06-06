@@ -2,9 +2,8 @@ from orm.fields import CharField, IntegerField
 from orm.models.model import Model
 
 class Product(Model):
-    id = IntegerField()
+    id = IntegerField(name="new_id", primary_key=True, autoincrement=True)
     title = CharField(max_length=100)
-
 
 def main():
     product = Product()
