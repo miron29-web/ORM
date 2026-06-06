@@ -18,3 +18,7 @@ class SQLiteConnection(DatabaseConnection):
         if cls.__connect:
             cls.__connect.close()
             cls.__connect = None
+
+    @classmethod
+    def commit(cls):
+        cls.__connect.commit()

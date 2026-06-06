@@ -1,6 +1,7 @@
 from ..fields import Field
 
 class ModelMeta(type):
+
     def __new__(cls, name, bases, attrs):
     
         if name == "Model":

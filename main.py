@@ -1,14 +1,19 @@
-from orm.fields import CharField, IntegerField
+from orm.fields import CharField, IntegerField, FloatField
 from orm.models.model import Model
 
 class Product(Model):
-    id = IntegerField(name="new_id", primary_key=True, autoincrement=True)
+    table_name = "products"
+
+    id = IntegerField(name="id", primary_key=True, autoincrement=True)
     title = CharField(max_length=100)
+    price = FloatField()
 
 def main():
-    product = Product()
-    product.title = "хлеб"
-    product.create_table()
+    product1 = Product(title="Хлеб", price=100.00)
+    product2 = Product(title="Масло", price=300.00)
+
+    product1.create_table()
+    product1.save()
 
 if __name__ == '__main__':
     main()

@@ -23,6 +23,9 @@ class Field:
             if self._autoincrement:
                 query_list.append("AUTOINCREMENT")
 
+        if self._unique:
+            query_list.append("UNIQUE")
+
         if self._null:
             query_list.append("NOT NULL")
 
@@ -44,4 +47,9 @@ class IntegerField(Field):
     def __init__(self, autoincrement=False, **kwargs):
         self._field_type = 'INTEGER'
         self._autoincrement = autoincrement
+        super().__init__(self._field_type, **kwargs)
+
+class FloatField(Field):
+    def __init__(self, **kwargs):
+        self._field_type = "REAL"
         super().__init__(self._field_type, **kwargs)
